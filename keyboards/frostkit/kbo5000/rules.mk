@@ -22,4 +22,4 @@ SPLIT_KEYBOARD = yes
 # It uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no    	# Breathing sleep LED during USB suspend
 
-DEFAULT_FOLDER = frostkit/kbo5000/rev2-ir
+DEFAULT_FOLDER = frostkit/kbo5000/rev1

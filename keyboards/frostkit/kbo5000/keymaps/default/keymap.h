@@ -24,6 +24,29 @@ typedef struct {
     uint16_t tap3;
 } qk_tap_dance_custom;
 
+
+
+void sendRawBuf(unsigned int *sigArray, unsigned int sizeArray, unsigned char kHz);
+void sendHexNEC(unsigned long sigCode, char numBits, unsigned char repeats, unsigned char kHz);
+void initSoftPWM(unsigned char carrierFreq);
+void mark(unsigned int mLen);
+void space(unsigned int sLen);
+void delay(unsigned long);
+void delayMicroseconds(unsigned int us);
+
+// RAW NEC signal -32 bit with 1 repeat - make sure buffer starts with a Mark
+// unsigned int NEC_RAW[] = {9000, 4500, 560, 560, 560, 560, 560, 1690, 560, 560, 560, 560, 560, 560, 560, 560, 560, 560, 560, 1690, 560, 1690, 560, 560, 560, 1690, 560, 1690, 560, 1690, 560, 1690, 560, 1690, 560, 560, 560, 560, 560, 1690, 560, 560, 560, 560, 560, 560, 560, 1690, 560, 560, 560, 1690, 560, 1690, 560, 560, 560, 1690, 560, 1690, 560, 1690, 560, 560, 560, 1690, 560, 39980, 9000, 2232, 560}; // AnalysIR Batch Export (IRremote) - RAW
+
+#define NEC_HEX_VALUE 0x20DF22DDUL // UL makes this an unsigned long
+#define NEC_BIT_COUNT 32
+#define NEC_HEADER_MARK 9000
+#define NEC_HEADER_SPACE 4500
+#define NEC_ONE_MARK 560
+#define NEC_ZERO_MARK 560
+#define NEC_ONE_SPACE 1690
+#define NEC_ZERO_SPACE 560
+#define NEC_TRAILER_MARK 560
+
 #define CC_BTAB LSFT(KC_TAB) // Reverse tab for outdent
 #define CC_LOCK LCTL(LCMD(KC_Q)) // Lock macOS
 #define CC_SCRN LSFT(LCMD(KC_4)) // Screenshot
@@ -42,6 +65,9 @@ typedef struct {
 #define HA_BRUP LCTL(LOPT(LCMD(KC_EQL))) // Increase office lighting
 #define HA_BRDN LCTL(LOPT(LCMD(KC_MINS))) // Decrease office lighting
 #define HA_TOG LCTL(LOPT(LCMD(KC_ENT))) // Toggle office lighting
+
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 500
 
 #define CUSTOM_TAP_DANCE(hold, tap1, tap2, tap3) \
 { .fn = {NULL, tap_register, tap_reset}, .user_data = (void *)&((qk_tap_dance_custom){hold, tap1, tap2, tap3}), }
