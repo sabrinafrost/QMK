@@ -25,13 +25,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    Frostrid of Bebbanburg
 #define PRODUCT         Splits Montgomery Beauregard I
 
-/* key matrix size */
-// Rows are doubled-up
+/* Matrix definitions (rows are doubled-up) */
 #define MATRIX_ROWS 12
 #define MATRIX_COLS 10
-
 #define DIODE_DIRECTION COL2ROW
-// wiring of each half
+
+/* Pin assignments for each half */
 #define MATRIX_ROW_PINS { B1, B2, C7, B4, D7, B0 }
 #define MATRIX_COL_PINS { F4, NO_PIN, F0, B7, B3, D2, D3, D5, D4, NO_PIN }
 #define MATRIX_ROW_PINS_RIGHT { B3, B2, B6, B4, D7, B0 }
@@ -42,26 +41,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_A_RIGHT { D6, C7 }
 #define ENCODERS_PAD_B_RIGHT { D4, C6 }
 
-/* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 5
-
+/* Other pin assignments */
+#define SOFT_SERIAL_PIN D0 // serial.c configuration for split keyboard
 #define BACKLIGHT_PIN B5
 #define CAPS_LOCK_LED_PIN B6
 
-/* serial.c configuration for split keyboard */
-#define SOFT_SERIAL_PIN D0
-
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
-
-/* ws2812 RGB LED */
+/* RGB LED (WS2812) Config */
 #define RGB_DI_PIN E6
 #define RGBLIGHT_ANIMATIONS
-#define RGBLED_NUM 16    // Number of LEDs
+#define RGBLED_NUM 16 // Number of LEDs
 #define RGBLED_SPLIT { 8, 8 }
 #define RGBLIGHT_LED_MAP { 1, 2, 3, 12, 13, 14, 15, 0, 7, 6, 5, 4, 11, 10, 9, 8 }
 
+/* Settings */
+#define DEBOUNCE 5 // Set 0 if debouncing isn't needed
 #define TAPPING_TERM 150
 #define TAP_CODE_DELAY 150
+#define LOCKING_SUPPORT_ENABLE // Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap
+#define LOCKING_RESYNC_ENABLE // Locking resynchronize hack
